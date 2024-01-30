@@ -7,14 +7,14 @@ class Node {
 }
 
 class LinkedList {
-  constructor(value = null) {
-    this._head = new Node(value);
+  constructor(key = null, value = null) {
+    this._head = new Node(key, value);
   }
 
   append(key, value) {
     const newNode = new Node(key, value);
 
-    if (!this._head) {
+    if (this._head.key === null) {
       this._head = newNode;
       return;
     }
@@ -43,7 +43,7 @@ class LinkedList {
     let current = this._head;
 
     while (current !== null) {
-      if (current.value !== null) {
+      if (current.key !== null) {
         count += 1;
       }
       current = current.nextNode;
@@ -76,7 +76,7 @@ class LinkedList {
       current = current.nextNode;
     }
 
-    return current.value;
+    return current;
   }
 
   pop() {
@@ -143,12 +143,11 @@ class LinkedList {
 }
 
 const list = new LinkedList();
-list.append('dsfhkl');
 list.append(3);
+list.append('key-linked', 'value-linked');
 
-const find = [list.find('dsfhkl'), list.find(3), list.find(4)];
-list.toString();
+const find = list.find('key-linked');
 
-console.log(find);
+console.log(list.at(find));
 
 module.exports = LinkedList;
