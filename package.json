@@ -1,15 +1,32 @@
 {
-  "name": "tempalte-testing",
+  "name": "testing-jest",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint --fix .",
+    "format": "prettier --write .",
+    "build": "webpack --mode = development",
+    "dev": "webpack serve --mode = development",
+    "test": "jest --silent",
+    "testv": "jest --verbose",
+    "testw": "jest --watch",
+    "gitTree": "git subtree push --prefix build origin gh-pages"
   },
   "keywords": [],
   "author": "kkyoumas (https://github.com/kkyouma)",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "8.56.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-config-standard": "17.1.0",
+    "eslint-plugin-import": "2.29.1",
+    "eslint-plugin-n": "16.6.2",
+    "eslint-plugin-promise": "6.1.1",
+    "jest": "29.7.0",
+    "prettier": "3.2.4"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
 }
