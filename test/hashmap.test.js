@@ -11,12 +11,17 @@ describe('HashMap', () => {
     hashMap.set('key1', 'value1');
     const result = hashMap.get('key1');
 
-    expect(result).toBe('valor1');
+    expect(result).toBe('value1');
+  });
+  test('has a key in hash table', () => {
+    hashMap.set('has_key');
+    const result = hashMap.has('has_key');
+    expect(result).toBe(true);
   });
 
-  test('get undefined to a unfefined key', () => {
+  test('Assign null to a key that does not exist.', () => {
     const result = hashMap.get('undefined_key');
-    expect(result).toBeUndefined();
+    expect(result).toBeNull();
   });
   test('remplace the existed key when set with the same', () => {
     hashMap.set('key2', 'original_value');
@@ -26,17 +31,17 @@ describe('HashMap', () => {
     expect(result).toBe('new_value');
   });
   test('delete element', () => {
-    hashMap.put('key3', 'value3');
+    hashMap.set('key3', 'value3');
     hashMap.remove('key3');
     const result = hashMap.get('key3');
     expect(result).toBeUndefined();
   });
   test('change length when is full', () => {
-    hashMap.put('key4', 'value4');
-    hashMap.put('key5', 'value5');
+    hashMap.set('key4', 'value4');
+    hashMap.set('key4', 'value5');
 
-    const result1 = hashMap.get('key4', 'value4');
-    const result2 = hashMap.get('key5', 'value5');
+    const result1 = hashMap.get('key4');
+    const result2 = hashMap.get('key4');
 
     expect(result1).toBe('value4');
     expect(result2).toBe('value5');
