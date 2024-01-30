@@ -20,7 +20,7 @@ class HashMap {
   set(key, value) {
     const hashValue = this.hash(key);
 
-    if (!this._storage) {
+    if (!this._storage === 0) {
       this._storage = [];
     }
 
@@ -37,14 +37,34 @@ class HashMap {
   }
 
   has(key) {
-    const hashValue = this.hash(key);
+    return this.get(key) !== null;
+  }
 
-    return !!this._storage[hashValue];
+  remove(key) {
+    const doesExist = this.has(key);
+
+    if (doesExist) {
+      const hashValue = this.hash(key);
+      this._storage.splice(hashValue, 1);
+    }
+
+    return doesExist;
+  }
+
+  length() {
+    let count = 0;
+    this._storage.forEach(e => {
+      if (e.key !== null) {
+        count += 1;
+        return count;
+      }
+    });
+    return count;
   }
 }
 
 const testHash = new HashMap();
-const testValue = testHash.hash('test');
+const testValue = testHash.set('test');
 
 console.log({ testValue });
 
