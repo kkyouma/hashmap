@@ -81,7 +81,7 @@ class LinkedList {
 
   pop() {
     if (!this._head.nextNode) {
-      this._head.value = null;
+      this._head.key = null;
       return;
     }
 
@@ -141,13 +141,5 @@ class LinkedList {
     return result.slice(0, -4);
   }
 }
-
-const list = new LinkedList();
-list.append(3);
-list.append('key-linked', 'value-linked');
-
-const find = list.find('key-linked');
-
-console.log(list.at(find));
 
 module.exports = LinkedList;
